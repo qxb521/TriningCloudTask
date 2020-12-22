@@ -1,0 +1,8 @@
+## 配置 阿里巴巴druid连接池  连接服务器本地数据库
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/xxxxxxxxxxxxxxxxxxxxxxxxxxx?serverTimezone=UTC&characterEncoding=utf-8
+      username: xxxxxx
+      password: xxxxxx
