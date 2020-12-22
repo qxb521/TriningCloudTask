@@ -1,8 +1,10 @@
 package com.qtrue.utils;
 
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -159,17 +161,20 @@ public class Request {
      * @param content 消息内容
      */
     public static void sendSignResultToVx(String content){
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-
-        HttpPost httpPost = new HttpPost("https://sc.ftqq.com/SCU137968T42f4219a1dca7a6ca926c17a76df12135fe1b7b554fe5.send");
-        httpPost.addHeader("Content-Type","application/x-www-form-urlencoded");
+        // 创建Http客户端
+        HttpClient httpClient = null;
 
         try {
+            /** 引入新的SSLClient类到httpClient（不校验所有证书的工具类以便于发送https请求）*/
+            httpClient = new SSLClient();
+            HttpPost httpPost = new HttpPost("https://sc.ftqq.com/SCU137968T42f4219a1dca7a6ca926c17a76df12135fe1b7b554fe5.send");
+            httpPost.addHeader("Content-Type","application/x-www-form-urlencoded");
+
             /** 自定义请求携带的参数*/
             String params = "text="+"---实习平台签到结果---"+"&"+"desp="+content;
 
             /** 将自定义的参数转成StringEntity用于让Post请求携带参数*/
-            StringEntity stringEntity = new StringEntity(params);
+            StringEntity stringEntity = new StringEntity(params,"UTF-8");
 
             /** 添加请求携带的参数*/
             httpPost.setEntity(stringEntity);

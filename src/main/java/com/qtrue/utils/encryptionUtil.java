@@ -107,6 +107,8 @@ public class encryptionUtil {
         /** 获取日志记录器对象 */
         Logger logger = LoggerFactory.getLogger(encryptionUtil.class);
 
+//        Request.sendSignResultToVx("推送测试");
+
 //        Training_User userInfo = new Training_User();
 //        userInfo.setAccount("184063019");
 //        userInfo.setApassword("Qb40323963");

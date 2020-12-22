@@ -14,8 +14,8 @@ public class UserData {
     public static Training_User getUserInfo(){
 
         Training_User userInfo = new Training_User();
-        userInfo.setAccount("184121072");
-        userInfo.setApassword(encryptionUtil.getMD5String("184121072"));
+        userInfo.setAccount("");
+        userInfo.setApassword(encryptionUtil.getMD5String(""));
         userInfo.setAtype("2");
 
         return userInfo;
